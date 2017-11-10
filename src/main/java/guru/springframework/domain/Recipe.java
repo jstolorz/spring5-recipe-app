@@ -31,6 +31,11 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
 
+    @ManyToMany
+    @JoinTable(name = "recipe_category"
+    , joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
+
 
     public Long getId() {
         return id;
@@ -128,6 +133,14 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public String toString() {
         return "Recipe{" +
@@ -139,8 +152,11 @@ public class Recipe {
                 ", source='" + source + '\'' +
                 ", url='" + url + '\'' +
                 ", directions='" + directions + '\'' +
+                ", ingredients=" + ingredients +
                 ", image=" + Arrays.toString(image) +
                 ", notes=" + notes +
+                ", difficulty=" + difficulty +
+                ", categories=" + categories +
                 '}';
     }
 }
