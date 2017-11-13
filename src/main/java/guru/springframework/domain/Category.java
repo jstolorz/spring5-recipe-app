@@ -15,27 +15,49 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipeSet;
 
+    public Category() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Set<Recipe> getRecipeSet() {
+        return this.recipeSet;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Set<Recipe> getRecipeSet() {
-        return recipeSet;
-    }
-
     public void setRecipeSet(Set<Recipe> recipeSet) {
         this.recipeSet = recipeSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        return id != null ? id.equals(category.id) : category.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    public String toString() {
+        return "Category(id=" + this.getId() + ", description=" + this.getDescription() + ", recipeSet=" + this.getRecipeSet() + ")";
     }
 }
