@@ -17,13 +17,4 @@ public class UnitOfMeasure {
 
     private String description;
 
-
-    public String getUom() {
-        return description;
-    }
-
-    public void setUom(String uom) {
-        this.description = uom;
-    }
-
 }

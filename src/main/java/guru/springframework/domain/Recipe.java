@@ -10,6 +10,7 @@ import java.util.Set;
 /**
  * Created by jt on 6/13/17.
  */
+
 @Entity
 @Data
 @EqualsAndHashCode(exclude = "ingredients")
@@ -46,6 +47,7 @@ public class Recipe {
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
 
+
     private Set<Category> categories = new HashSet<>();
 
 
@@ -59,6 +61,5 @@ public class Recipe {
         this.ingredients.add(ingredient);
         return this;
     }
-
 
 }
