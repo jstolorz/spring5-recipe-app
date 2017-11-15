@@ -34,6 +34,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	// https://mvnrepository.com/artifact/org.projectlombok/lombok
 	compile( group: 'org.projectlombok', name: 'lombok')
+	compile 'org.webjars:bootstrap:3.3.7-1'
+	compile 'org.webjars.npm:jquery:3.2.1'
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
