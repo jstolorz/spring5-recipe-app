@@ -12,6 +12,8 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 
+// Integration test
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {
