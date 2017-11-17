@@ -1,7 +1,7 @@
 package guru.springframework.controllers;
 
 import guru.springframework.domain.Recipe;
-import guru.springframework.services.RecipeServiceImpl;
+import guru.springframework.services.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IndexControllerTest {
 
     @Mock
-    RecipeServiceImpl recipeService;
+    RecipeService recipeService;
 
     @Mock
     Model model;
@@ -36,6 +36,7 @@ public class IndexControllerTest {
 
         controller = new IndexController(recipeService);
     }
+
 
     @Test
     public void testMockMVC() throws Exception {
@@ -61,11 +62,12 @@ public class IndexControllerTest {
 
         when(recipeService.getRecipes()).thenReturn(recipes);
 
+        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+
         String viewIndex = controller.getIndexPage(model);
 
         assertEquals("index", viewIndex);
 
-        ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
         verify(recipeService, times(1)).getRecipes();
 
