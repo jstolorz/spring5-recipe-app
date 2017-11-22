@@ -27,4 +27,8 @@ public class RecipeCommand {
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
 
+
+
+
+
 }
