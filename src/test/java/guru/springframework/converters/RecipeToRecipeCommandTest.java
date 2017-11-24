@@ -17,7 +17,7 @@ public class RecipeToRecipeCommandTest {
     private static final Integer SERVINGS = new Integer(3);
     private static final String SOURCE = "source";
     private static final String URL = "localhost";
-    private static final String DIRECTION = "direction";
+    private static final String DIRECTION = "directions";
     private static final Long ING_ID_1 = new Long(1L);
     private static final Long ING_ID_2 = new Long(2L);
     private static final Difficulty DIFFICOULTY = Difficulty.HARD;
@@ -78,13 +78,13 @@ public class RecipeToRecipeCommandTest {
         assertEquals(PREP_TIME, recipeCommand.getPrepTime());
         assertEquals(DESCRIPTION, recipeCommand.getDescription());
         assertEquals(DIFFICOULTY, recipeCommand.getDifficulty());
-        assertEquals(DIRECTION, recipeCommand.getDirection());
+        assertEquals(DIRECTION, recipeCommand.getDirections());
         assertEquals(SERVINGS, recipeCommand.getServings());
         assertEquals(SOURCE, recipeCommand.getSource());
         assertEquals(URL, recipeCommand.getUrl());
         assertEquals(NOT_ID, recipeCommand.getNotes().getId());
         assertEquals(2, recipeCommand.getCategories().size());
-        assertEquals(2, recipeCommand.getIngrediants().size());
+        assertEquals(2, recipeCommand.getIngredients().size());
 
     }
 

@@ -37,10 +37,10 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
         recipe.setServings(source.getServings());
         recipe.setSource(source.getSource());
         recipe.setUrl(source.getUrl());
-        recipe.setDirections(source.getDirection());
+        recipe.setDirections(source.getDirections());
 
-        if(source.getIngrediants() != null && source.getIngrediants().size() > 0){
-            source.getIngrediants().
+        if(source.getIngredients() != null && source.getIngredients().size() > 0){
+            source.getIngredients().
              forEach(ingredient -> recipe.getIngredients().add(toIngredient.convert(ingredient)));
         }
 

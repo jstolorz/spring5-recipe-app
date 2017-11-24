@@ -20,7 +20,7 @@ public class RecipeCommandToRecipeTest {
     private static final Integer SERVINGS = new Integer(3);
     private static final String SOURCE = "source";
     private static final String URL = "localhost";
-    private static final String DIRECTION = "direction";
+    private static final String DIRECTION = "directions";
     private static final Long ING_ID_1 = new Long(1L);
     private static final Long ING_ID_2 = new Long(2L);
     private static final Difficulty DIFFICOULTY = Difficulty.HARD;
@@ -49,7 +49,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setServings(SERVINGS);
         recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
-        recipeCommand.setDirection(DIRECTION);
+        recipeCommand.setDirections(DIRECTION);
 
         IngredientCommand ingredientCommand1 = new IngredientCommand();
         ingredientCommand1.setId(ING_ID_1);
@@ -57,8 +57,8 @@ public class RecipeCommandToRecipeTest {
         IngredientCommand ingredientCommand2 = new IngredientCommand();
         ingredientCommand1.setId(ING_ID_2);
 
-        recipeCommand.getIngrediants().add(ingredientCommand1);
-        recipeCommand.getIngrediants().add(ingredientCommand2);
+        recipeCommand.getIngredients().add(ingredientCommand1);
+        recipeCommand.getIngredients().add(ingredientCommand2);
 
         NotesCommand notesCommand = new NotesCommand();
         notesCommand.setId(NOT_ID);
