@@ -71,7 +71,7 @@ public class IndexControllerTest {
 
         verify(recipeService, times(1)).getRecipes();
 
-        verify(model,times(1)).addAttribute(eq("recipies"),argumentCaptor.capture());
+        verify(model,times(1)).addAttribute(eq("recipes"),argumentCaptor.capture());
 
         Set<Recipe> recipeSet = argumentCaptor.getValue();
 

@@ -79,6 +79,15 @@ public class RecipeServiceImplTest {
 
     }
 
+    @Test
+    public void testDeleteById() throws Exception{
+
+        Long idToDelete = Long.valueOf(2L);
+
+
+
+    }
+
 
 
 }
