@@ -1,6 +1,7 @@
 package guru.springframework.controllers;
 
 
+import guru.springframework.services.IngredientService;
 import guru.springframework.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IngredientController {
 
     private final RecipeService recipeService;
+    private final IngredientService ingredientService;
 
-    public IngredientController(RecipeService recipeService) {
+    public IngredientController(RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
+        this.ingredientService = ingredientService;
     }
-
 
     @GetMapping
     @RequestMapping("/recipe/{recipeId}/ingredients")
@@ -29,6 +31,17 @@ public class IngredientController {
         mode.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(recipeId)));
 
         return "recipe/ingredient/list";
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/{id}/show")
+    public String showRecipeIngrediant(@PathVariable String recipeId,
+                                       @PathVariable String id, Model model){
+
+        model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(
+        Long.valueOf(recipeId),Long.valueOf(id)));
+
+        return "recipe/ingredient/show";
     }
 
 }

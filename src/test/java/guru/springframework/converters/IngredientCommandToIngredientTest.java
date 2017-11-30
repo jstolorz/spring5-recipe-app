@@ -1,8 +1,8 @@
 package guru.springframework.converters;
 
 import guru.springframework.commands.IngredientCommand;
+import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.domain.Ingredient;
-import guru.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,9 +41,9 @@ public class IngredientCommandToIngredientTest {
         ingredientCommand.setId(LONG_VALUE);
         ingredientCommand.setDescription(DESCRIPTION);
         ingredientCommand.setAmount(AMOUNT);
-        UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
+        UnitOfMeasureCommand unitOfMeasure = new UnitOfMeasureCommand();
         unitOfMeasure.setId(UOM_ID);
-        ingredientCommand.setUnitOfMeasure(unitOfMeasure);
+        ingredientCommand.setUom(unitOfMeasure);
 
 
         Ingredient ingredient = ingredientCommandToIngredient.convert(ingredientCommand);
