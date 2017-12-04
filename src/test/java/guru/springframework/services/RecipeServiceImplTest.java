@@ -1,7 +1,9 @@
 package guru.springframework.services;
 
+import guru.springframework.commands.RecipeCommand;
 import guru.springframework.converters.*;
 import guru.springframework.domain.Recipe;
+import guru.springframework.exceptions.NotFoundException;
 import guru.springframework.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,10 +28,10 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
-
+    @Mock
     RecipeCommandToRecipe toRecipe;
 
-
+    @Mock
     RecipeToRecipeCommand toRecipeCommand;
 
     @Before
@@ -76,6 +78,41 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
 
+
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception{
+
+        Optional<Recipe> optionalRecipe = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        Recipe recipe = recipeService.findById(1L);
+    }
+
+    @Test
+    public void getRecipeCommandByIdTest() throws Exception{
+
+        Recipe recipe = new Recipe();
+
+        recipe.setId(1L);
+
+        Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(1L);
+
+        when(toRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand recipeById = recipeService.findCommandById(1L);
+
+        assertNotNull("Null recipe returned", recipeById);
+
+        verify(recipeRepository,times(1)).findById(anyLong());
+        verify(recipeRepository,never()).findAll();
 
     }
 
